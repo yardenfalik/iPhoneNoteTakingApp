@@ -6,18 +6,28 @@
     <meta name="apple-mobile-web-app-capable" content="yes"> 
     <meta name="apple-mobile-web-app-status-bar-style" content="#f0f0f0">
     <meta name="apple-mobile-web-app-title" content="Notes">
-    <link rel="apple-touch-icon" href="icon.png">
-    <meta name="apple-touch-startup-image" content="splash.png">
+    <link rel="apple-touch-icon" href="static/img/logo.png">
+    <meta name="apple-touch-startup-image" content="static/img/logo.png">
     <link rel="stylesheet" href="static/css/styles.css">
 
     <title>App</title>
 </head>
 <body>
-    <h1><label for="text">Take A Note</label></h1>
-    <textarea id="note" name="text" rows="10" cols="40"></textarea>
-    <button onclick="submitNote()">submit</button>
-    <div id="notes">
-        <ul id="notesList"></ul>
+    <main id="main">
+        <h1><label for="text">Take A Note</label></h1>
+        <textarea id="note" name="text" rows="10" cols="40"></textarea>
+        <button onclick="submitNote()">submit</button>
+        <div id="notes">
+            <ul id="notesList"></ul>
+        </div>
+    </main>
+    <div class="instruction" id="instruction">
+        <br>
+        <img src="static/img/logo.png">
+        <h3>Open in Safari on your iPhone or iPad,
+            <br>click the share button and
+            <br>then "Add to home Screen".
+        </h3>
     </div>
     <script src="static/js/app.js"></script>
 </body>

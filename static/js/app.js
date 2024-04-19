@@ -1,5 +1,14 @@
 var notes = [];
 
+if(window.navigator.standalone == true)
+{
+    document.getElementById('instruction').style.display = 'none';
+}
+else
+{
+    document.getElementById('main').style.display = 'none';
+}
+
 function submitNote()
 {
     var note = document.getElementById('note');
