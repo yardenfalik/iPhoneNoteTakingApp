@@ -24,10 +24,8 @@ function loadNotes()
     for (var i = 1; i < Object.keys(notes).length; i++) 
     {
         var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.setAttribute("onclick","changeNote("+i+")");
-        a.innerHTML = notes[i];
-        li.appendChild(a);
+        li.setAttribute("onclick","changeNote("+ i +")");
+        li.innerHTML = notes[i];
         if(notes[i])
         {
             notesList.appendChild(li);
