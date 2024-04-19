@@ -21,10 +21,17 @@ function loadNotes()
 
     var notesList = document.getElementById('notesList');
     notesList.innerHTML = '';
-    for (var i = 1; i < Object.keys(notes).length; i++) {
+    for (var i = 1; i < Object.keys(notes).length; i++) 
+    {
         var li = document.createElement('li');
-        li.innerHTML = notes[i];
-        notesList.appendChild(li);
+        var a = document.createElement('a');
+        a.setAttribute("onclick","changeNote("+i+")");
+        a.innerHTML = notes[i];
+        li.appendChild(a);
+        if(notes[i])
+        {
+            notesList.appendChild(li);
+        }
     }
 }
 
@@ -61,7 +68,7 @@ function updateDatabase()
     localStorage.setItem('notes', JSON.stringify(notes));
 }
 
-function addNote()
+function addNote(id)
 {
     var main = document.getElementById('main');
 
@@ -80,8 +87,16 @@ function addNote()
     deleteButton.innerHTML = "🗑️";
 
     var note = document.createElement("textarea");
+    if(id != 0)
+    {
+        note.value = notes[id];
+        note.setAttribute("onchange","updateNote(" + id + ")");
+    }
+    else
+    {
+        note.setAttribute("onchange","updateNote(" + Object.keys(notes).length + ")");
+    }
     note.id = "note";
-    note.setAttribute("onchange","updateNote(" + Object.keys(notes).length + ")");
 
     div.appendChild(backButton);
     div.appendChild(deleteButton);
@@ -89,4 +104,9 @@ function addNote()
     document.getElementById('noteDiv').appendChild(div);
 
     main.style.display = "none";
+}
+
+function changeNote(id)
+{
+    addNote(id);
 }
