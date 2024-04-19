@@ -10,27 +10,15 @@
     <meta name="apple-touch-startup-image" content="static/img/logo.png">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#f0f0f0">
-    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/note.css">
 
     <title>App</title>
 </head>
 <body>
     <main id="main">
-        <h1><label for="text">Notes</label></h1>
-        <button onclick="addNote()">New Note</button>
-        <div id="notes">
-            <ul id="notesList"></ul>
-        </div>
+        <button onclick="getBackButton()">&lt; Notes</button>
+        <textarea onchange="updateNote(1)" id="note" name="text"></textarea>
     </main>
-    <div id="noteDiv"></div>
-    <div class="instruction" id="instruction">
-        <br>
-        <img src="static/img/logo.png">
-        <h3>Open in Safari on your iPhone or iPad,
-            <br>click the share button and
-            <br>then "Add to home Screen".
-        </h3>
-    </div>
     <script src="static/js/app.js"></script>
 </body>
 </html>
