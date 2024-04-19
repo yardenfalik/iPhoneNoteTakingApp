@@ -46,6 +46,16 @@ function getBackButton()
     noteTaking.remove();
 }
 
+function deleteNote()
+{
+    var note = document.getElementById('note').value;
+    var index = Object.keys(notes).find(key => notes[key] === note);
+    delete notes[index];
+    updateDatabase();
+    loadNotes();
+    getBackButton();
+}
+
 function updateDatabase()
 {
     localStorage.setItem('notes', JSON.stringify(notes));
@@ -60,15 +70,21 @@ function addNote()
     div.id = "noteTaking";
 
 
-    var button = document.createElement("button");
-    button.setAttribute("onclick","getBackButton()");
-    button.innerHTML = "&lt; Notes";
+    var backButton = document.createElement("button");
+    backButton.setAttribute("onclick","getBackButton()");
+    backButton.innerHTML = "&lt; Notes";
+
+    var deleteButton = document.createElement("button");
+    deleteButton.setAttribute("onclick","deleteNote()");
+    deleteButton.className = "delete";
+    deleteButton.innerHTML = "🗑️";
 
     var note = document.createElement("textarea");
     note.id = "note";
     note.setAttribute("onchange","updateNote(" + Object.keys(notes).length + ")");
 
-    div.appendChild(button);
+    div.appendChild(backButton);
+    div.appendChild(deleteButton);
     div.appendChild(note);
     document.getElementById('noteDiv').appendChild(div);
 
