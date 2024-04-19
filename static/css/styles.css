@@ -1,3 +1,7 @@
+::selection {
+    background-color: #FFD11A;
+}
+
 body {
     background-color: #f0f0f0;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -5,6 +9,7 @@ body {
     padding: 0;
     max-width: 100vw;
     overflow-x: hidden;
+    color: #303030;
 }
 
 main {
@@ -14,9 +19,11 @@ main {
 textarea {
     border: 3px solid #303030;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 button {
+    background-color: #00000000;
     border: none;
     color: #FFD11A;
     text-align: center;
