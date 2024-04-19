@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-title" content="Try">
     <link rel="apple-touch-icon" href="icon.png">
     <meta name="apple-touch-startup-image" content="splash.png">
+    <link rel="stylesheet" href="static/css/styles.css">
 
-    <title>Document</title>
+    <title>App</title>
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <h1><label for="text">Take A Note</label></h1>
+    <textarea id="note" name="text" rows="10" cols="40"></textarea>
+    <button onclick="submitNote()">submit</button>
+    <div id="notes">
+        <ul id="notesList"></ul>
+    </div>
+    <script src="static/js/app.js"></script>
 </body>
 </html>
