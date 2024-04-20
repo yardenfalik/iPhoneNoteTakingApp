@@ -1,13 +1,13 @@
 var notes = {0: "start"};
 
-if(window.navigator.standalone == true)
-{
-    document.getElementById('instruction').style.display = 'none';
-}
-else
-{
-    document.getElementById('main').style.display = 'none';
-}
+// if(window.navigator.standalone == true)
+// {
+//     document.getElementById('instruction').style.display = 'none';
+// }
+// else
+// {
+//     document.getElementById('main').style.display = 'none';
+// }
 
 
 loadNotes();
@@ -21,7 +21,7 @@ function loadNotes()
 
     var notesList = document.getElementById('notesList');
     notesList.innerHTML = '';
-    for (var i = 1; i < Object.keys(notes).length; i++) 
+    for (var i = 1; i <= Object.keys(notes).length; i++) 
     {
         var li = document.createElement('li');
         li.setAttribute("onclick","changeNote("+ i +")");
