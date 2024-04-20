@@ -21,12 +21,14 @@ function loadNotes()
 
     var notesList = document.getElementById('notesList');
     notesList.innerHTML = '';
-    for (var i = 1; i < Object.keys(notes).length; i++) 
+
+    const keys = Object.keys(notes);
+    for (var i = 1; i <= keys.length; i++) 
     {
         var li = document.createElement('li');
         li.setAttribute("onclick","changeNote("+ i +")");
-        li.innerHTML = notes[i];
-        if(notes[i])
+        li.innerHTML = notes[keys[i]];
+        if(notes[keys[i]])
         {
             notesList.appendChild(li);
         }
