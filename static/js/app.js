@@ -31,14 +31,27 @@ function loadNotes()
         {
             data = data.substring(0, 21) + "...";
         }
+
+        var date = ""
         if((d.getMonth() + 1) < 10)
         {
-            li.innerHTML = data + "<br>" + d.getDate() + "/0" + (d.getMonth() + 1) + "/" + d.getFullYear();
+            date = d.getDate() + "/0" + (d.getMonth() + 1) + "/" + d.getFullYear();
         }
         else
         {
-            li.innerHTML = data + "<br>" + d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+            date = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
         }
+
+        if(data.includes("\n"))
+        {
+            data = "<strong>" + data.split("\n", 1) + "</strong><br>" + data.slice(data.indexOf("\n"));
+        }
+        else
+        {
+            data = "<strong>" + data + "</strong>" + "<br>" + "No additional text";
+        }
+        li.innerHTML = data + " " + date;
+
         if(notes[i])
         {
             notesList.appendChild(li);

@@ -58,6 +58,14 @@ li:not(:last-child) {
     border-bottom: 1px solid #ccc;
 }
 
+.notes {
+    color: #707070;
+}
+
+strong {
+    color: #303030;
+}
+
 .noteTaking {
     text-align: start;
     background-color: #ffffff;
