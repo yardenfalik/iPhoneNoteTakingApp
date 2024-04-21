@@ -61,12 +61,14 @@ li:not(:last-child) {
 .noteTaking {
     text-align: start;
     background-color: #ffffff;
+    overflow: hidden;
 }
 
 .noteTaking > textarea {
     border: none;
+    outline: none;
     height: 95vh;
-    width: 99vw;
+    width: 100vw;
 }
 
 .noteTaking > button {
@@ -87,7 +89,7 @@ li:not(:last-child) {
 
 .noteTaking > p {
     text-align: center;
-    font-size: 20px;
+    font-size: 12px;
     color: #aaa;
     margin: 0px;
 }
