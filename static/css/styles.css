@@ -19,7 +19,7 @@ main {
 textarea {
     border: 3px solid #303030;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 button {
@@ -38,7 +38,6 @@ button {
 .addButton {
     position: absolute;
     right: 0;
-    margin: auto 10px;
 }
 
 ul {
@@ -61,11 +60,15 @@ li:not(:last-child) {
 
 .noteTaking {
     text-align: start;
+    background-color: #ffffff;
+    overflow: hidden;
 }
 
 .noteTaking > textarea {
     border: none;
-    height: 100vh;
+    outline: none;
+    font-size: 18px;
+    height: 95vh;
     width: 100vw;
 }
 
@@ -73,7 +76,7 @@ li:not(:last-child) {
     border: none;
     text-align: center;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 18px;
     cursor: pointer;
     background-color: #00000000;
     color: #FFD11A;
@@ -83,6 +86,13 @@ li:not(:last-child) {
 .noteTaking > .delete {
     position: absolute;
     right: 0;
+}
+
+.noteTaking > p {
+    text-align: center;
+    font-size: 16px;
+    color: #aaa;
+    margin: 0px;
 }
 
 .instruction {
