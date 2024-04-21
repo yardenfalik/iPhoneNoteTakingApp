@@ -50,8 +50,8 @@ ul {
 }
 
 li {
-    padding: 10px 50px;
-    margin: 0px 5px;
+    padding: 10px 0px;
+    margin: 0px 20px;
 }
 
 li:not(:last-child) {

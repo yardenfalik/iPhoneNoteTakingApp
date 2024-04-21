@@ -25,7 +25,20 @@ function loadNotes()
     {
         var li = document.createElement('li');
         li.setAttribute("onclick","changeNote("+ i +")");
-        li.innerHTML = notes[i];
+        const d = new Date(notes[i][1]);
+        var data = notes[i][0]
+        if(data.length > 21)
+        {
+            data = data.substring(0, 21) + "...";
+        }
+        if((d.getMonth() + 1) < 10)
+        {
+            li.innerHTML = data + "<br>" + d.getDate() + "/0" + (d.getMonth() + 1) + "/" + d.getFullYear();
+        }
+        else
+        {
+            li.innerHTML = data + "<br>" + d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+        }
         if(notes[i])
         {
             notesList.appendChild(li);
@@ -35,14 +48,15 @@ function loadNotes()
 
 function updateNote(index)
 {
+    var currentDate = new Date();
     var note = document.getElementById('note').value;
     if(index < notes.length)
     {
-        notes[index] = note;
+        notes[index] = [note, currentDate];
     }
     else
     {
-        notes.push(note);
+        notes.push([note, currentDate]);
     }
 }
 
@@ -73,8 +87,6 @@ function updateDatabase()
 
 function addNote(index)
 {
-    var currentDate = new Date();
-
     var main = document.getElementById('main');
 
     var div = document.createElement("div");
@@ -95,7 +107,7 @@ function addNote(index)
     var note = document.createElement("textarea");
     if(index != -1)
     {
-        note.value = notes[index];
+        note.value = notes[index][0];
         note.setAttribute("onchange","updateNote(" + index + ")");
         deleteButton.setAttribute("onclick","deleteNote(" + index + ")");
     }
