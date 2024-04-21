@@ -1,14 +1,13 @@
-var notes = {0: "start"};
+var notes = [];
 
-if(window.navigator.standalone == true)
-{
-    document.getElementById('instruction').style.display = 'none';
-}
-else
-{
-    document.getElementById('main').style.display = 'none';
-}
-
+// if(window.navigator.standalone == true)
+// {
+//     document.getElementById('instruction').style.display = 'none';
+// }
+// else
+// {
+//     document.getElementById('main').style.display = 'none';
+// }
 
 loadNotes();
 
@@ -22,23 +21,29 @@ function loadNotes()
     var notesList = document.getElementById('notesList');
     notesList.innerHTML = '';
 
-    const keys = Object.keys(notes);
-    for (var i = 1; i <= keys.length; i++) 
+    for (var i = 0; i < notes.length; i++) 
     {
         var li = document.createElement('li');
         li.setAttribute("onclick","changeNote("+ i +")");
-        li.innerHTML = notes[keys[i]];
-        if(notes[keys[i]])
+        li.innerHTML = notes[i];
+        if(notes[i])
         {
             notesList.appendChild(li);
         }
     }
 }
 
-function updateNote(id)
+function updateNote(index)
 {
     var note = document.getElementById('note').value;
-    notes[id] = note;
+    if(index < notes.length)
+    {
+        notes[index] = note;
+    }
+    else
+    {
+        notes.push(note);
+    }
 }
 
 function getBackButton()
@@ -53,11 +58,9 @@ function getBackButton()
     noteTaking.remove();
 }
 
-function deleteNote()
+function deleteNote(index)
 {
-    var note = document.getElementById('note').value;
-    var index = Object.keys(notes).find(key => notes[key] === note);
-    delete notes[index];
+    notes.splice(index, 1);
     updateDatabase();
     loadNotes();
     getBackButton();
@@ -68,45 +71,65 @@ function updateDatabase()
     localStorage.setItem('notes', JSON.stringify(notes));
 }
 
-function addNote(id)
+function addNote(index)
 {
+    var currentDate = new Date();
+
     var main = document.getElementById('main');
 
     var div = document.createElement("div");
     div.className = "noteTaking";
     div.id = "noteTaking";
 
+    var p = document.createElement("p");
+    p.innerHTML = timeManager();
 
     var backButton = document.createElement("button");
     backButton.setAttribute("onclick","getBackButton()");
     backButton.innerHTML = "&lt; Notes";
 
     var deleteButton = document.createElement("button");
-    deleteButton.setAttribute("onclick","deleteNote()");
     deleteButton.className = "delete";
     deleteButton.innerHTML = "🗑️";
 
     var note = document.createElement("textarea");
-    if(id != 0)
+    if(index != -1)
     {
-        note.value = notes[id];
-        note.setAttribute("onchange","updateNote(" + id + ")");
+        note.value = notes[index];
+        note.setAttribute("onchange","updateNote(" + index + ")");
+        deleteButton.setAttribute("onclick","deleteNote(" + index + ")");
     }
     else
     {
-        note.setAttribute("onchange","updateNote(" + Object.keys(notes).length + ")");
+        note.setAttribute("onchange","updateNote(" + notes.length + ")");
+        deleteButton.setAttribute("onclick","deleteNote(" + notes.length + ")");
     }
     note.id = "note";
 
     div.appendChild(backButton);
     div.appendChild(deleteButton);
+    div.appendChild(p);
     div.appendChild(note);
     document.getElementById('noteDiv').appendChild(div);
-
+    
     main.style.display = "none";
 }
 
-function changeNote(id)
+function changeNote(index)
 {
-    addNote(id);
+    addNote(index);
+}
+
+function timeManager()
+{
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    var d = new Date();
+
+    if (d.getMinutes() < 10) 
+    {
+        var time = d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear() + " at " + d.getHours() + ":0" + d.getMinutes();
+        return time;
+    }
+    var time = d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear() + " at " + d.getHours() + ":" + d.getMinutes();
+    return time;
 }

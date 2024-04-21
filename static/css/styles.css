@@ -38,7 +38,6 @@ button {
 .addButton {
     position: absolute;
     right: 0;
-    margin: auto 10px;
 }
 
 ul {
@@ -61,12 +60,13 @@ li:not(:last-child) {
 
 .noteTaking {
     text-align: start;
+    background-color: #ffffff;
 }
 
 .noteTaking > textarea {
     border: none;
-    height: 100vh;
-    width: 100vw;
+    height: 95vh;
+    width: 99vw;
 }
 
 .noteTaking > button {
@@ -83,6 +83,13 @@ li:not(:last-child) {
 .noteTaking > .delete {
     position: absolute;
     right: 0;
+}
+
+.noteTaking > p {
+    text-align: center;
+    font-size: 20px;
+    color: #aaa;
+    margin: 0px;
 }
 
 .instruction {
