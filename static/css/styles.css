@@ -115,6 +115,7 @@ strong {
 .noteTaking > .delete {
     position: absolute;
     right: 0;
+    font-size: 1.5rem;
 }
 
 .noteTaking > .share {

@@ -1,13 +1,13 @@
 var notes = [];
 
-if(window.navigator.standalone == true)
-{
-    document.getElementById('instruction').style.display = 'none';
-}
-else
-{
-    document.getElementById('main').style.display = 'none';
-}
+// if(window.navigator.standalone == true)
+// {
+//     document.getElementById('instruction').style.display = 'none';
+// }
+// else
+// {
+//     document.getElementById('main').style.display = 'none';
+// }
 
 loadNotes();
 
@@ -21,21 +21,36 @@ function loadNotes(search = "")
     var notesList = document.getElementById('notesList');
     notesList.innerHTML = '';
 
-    for (var i = 0; i < notes.length; i++) 
+    for (var i = notes.length - 1 ; i >= 0; i--) 
     {
+        const currentDate = new Date();
         var li = document.createElement('li');
         li.setAttribute("onclick","changeNote("+ i +")");
         const d = new Date(notes[i][1]);
         var data = notes[i][0]
 
         var date = ""
-        if((d.getMonth() + 1) < 10)
+        if(d.getDate() == currentDate.getDate() && d.getMonth() == currentDate.getMonth() && d.getFullYear() == currentDate.getFullYear())
         {
-            date = d.getDate() + "/0" + (d.getMonth() + 1) + "/" + d.getFullYear();
+            if(d.getMinutes() < 10)
+            {
+                date = d.getHours() + ":0" + d.getMinutes();
+            }
+            else
+            {
+                date = d.getHours() + ":" + d.getMinutes();
+            }
         }
         else
         {
-            date = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+            if((d.getMonth() + 1) < 10)
+            {
+                date = d.getDate() + "/0" + (d.getMonth() + 1) + "/" + d.getFullYear();
+            }
+            else
+            {
+                date = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+            }
         }
 
         if(data.includes("\n"))
@@ -91,7 +106,8 @@ function updateNote(index)
     var note = document.getElementById('note').value;
     if(index < notes.length)
     {
-        notes[index] = [note, currentDate];
+        notes.push([note, currentDate]);
+        deleteNote(index)
     }
     else
     {
