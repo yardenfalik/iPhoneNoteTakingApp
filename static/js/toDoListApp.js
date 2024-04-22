@@ -26,7 +26,6 @@ function loadList()
         document.getElementById("list").appendChild(li);
         if(toDoList[i][1] == true)
         {
-            li.style.backgroundColor = "#d1d1d1";
             li.style.textDecoration = "line-through";
         }
     }
@@ -58,13 +57,11 @@ function markAsDone(id)
     if(toDoList[id][1] == true)
     {
         toDoList[id][1] = false;
-        document.getElementById(id).style.backgroundColor = "inherit";
         item.style.textDecoration = "none";
     }
     else
     {
         toDoList[id][1] = true;
-        document.getElementById(id).style.backgroundColor = "#d1d1d1";
         item.style.textDecoration = "line-through";
     }
     updateDatabase();

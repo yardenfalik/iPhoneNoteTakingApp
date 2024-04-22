@@ -72,7 +72,7 @@ input {
 
 ::placeholder {
     font-size: 1.2em;
-    padding: 20px;
+    padding: 9px;
 }
 
 li:not(:last-child) {
@@ -163,5 +163,9 @@ strong {
     transition: all 0.3s ease 0s;
     border-style: solid;
     border-color: #ccc;
-    width: 60vw;
+    width: 50vw;
+}
+
+.toDoList > ol {
+    font-size: 2rem;
 }
