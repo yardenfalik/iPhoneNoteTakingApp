@@ -177,7 +177,11 @@ function addNote(index)
     document.getElementById('noteDiv').appendChild(div);
     
     main.style.display = "none";
-    collapseNotes();
+
+    if(document.getElementById('notesSection').style.display == 'none')
+    {
+        collapseNotes();
+    }
 }
 
 function changeNote(index)
