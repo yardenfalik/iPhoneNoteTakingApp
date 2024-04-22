@@ -68,10 +68,10 @@ input {
     background-color: #e4e3e9;
     color: #656565;
     border-radius: 10px;
+    font-size: 1.5em;
 }
 
 ::placeholder {
-    font-size: 1.5em;
     padding: 20px;
 }
 
