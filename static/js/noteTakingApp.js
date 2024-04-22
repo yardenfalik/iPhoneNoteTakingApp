@@ -152,7 +152,7 @@ function addNote(index)
 
     var shareButton = document.createElement("button");
     shareButton.className = "share";
-    shareButton.innerHTML = "↪";
+    shareButton.innerHTML = "Share";
     shareButton.setAttribute("onclick","shareNote()");
 
     var note = document.createElement("textarea");

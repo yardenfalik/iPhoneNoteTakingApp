@@ -26,7 +26,7 @@
 
         <h1><button id="toDoListButton" onclick="collapseToDo()">-</button><label for="toDoListSection">To-Do List</label></h1>
         <section id="toDoListSection" class="toDoList">
-            <input type="text" id="one">
+            <input type="text" id="one" onfocus="this.value=''">
             <button class="addbutton" onclick="addFunction()">Add</button>
 
             <ol id="list"></ol>

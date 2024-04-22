@@ -1,11 +1,11 @@
-if(window.navigator.standalone == true)
-{
-    document.getElementById('instruction').style.display = 'none';
-}
-else
-{
-    document.getElementById('main').style.display = 'none';
-}
+// if(window.navigator.standalone == true)
+// {
+//     document.getElementById('instruction').style.display = 'none';
+// }
+// else
+// {
+//     document.getElementById('main').style.display = 'none';
+// }
 
 function collapseToDo()
 {

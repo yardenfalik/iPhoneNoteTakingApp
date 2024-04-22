@@ -16,7 +16,7 @@ function loadList()
         li.appendChild(node);
         li.setAttribute("id", i);
         li.setAttribute("onclick", "markAsDone(" + i + ")");
-        
+
         var deleteButton = document.createElement("button");
         deleteButton.innerHTML = "X";
         deleteButton.setAttribute("class", "deleteButton");
@@ -35,7 +35,6 @@ function loadList()
 function addFunction() 
 {
     var one = document.getElementById("one").value;
-    document.getElementById("one").innerHTML = "";
     toDoList.push([one, false]);
     updateDatabase();
 }
@@ -43,6 +42,7 @@ function addFunction()
 function deleteItem(id) 
 {
     toDoList.splice(id, 1);
+    markAsDone(id);
     updateDatabase();
 }
 
