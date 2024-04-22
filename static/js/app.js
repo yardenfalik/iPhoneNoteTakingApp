@@ -1,17 +1,17 @@
 var notes = [];
 
-if(window.navigator.standalone == true)
-{
-    document.getElementById('instruction').style.display = 'none';
-}
-else
-{
-    document.getElementById('main').style.display = 'none';
-}
+// if(window.navigator.standalone == true)
+// {
+//     document.getElementById('instruction').style.display = 'none';
+// }
+// else
+// {
+//     document.getElementById('main').style.display = 'none';
+// }
 
 loadNotes();
 
-function loadNotes()
+function loadNotes(search = "")
 {
     if (localStorage.getItem('notes')) 
     {
@@ -27,10 +27,6 @@ function loadNotes()
         li.setAttribute("onclick","changeNote("+ i +")");
         const d = new Date(notes[i][1]);
         var data = notes[i][0]
-        if(data.length > 21)
-        {
-            data = data.substring(0, 21) + "...";
-        }
 
         var date = ""
         if((d.getMonth() + 1) < 10)
@@ -44,17 +40,47 @@ function loadNotes()
 
         if(data.includes("\n"))
         {
-            data = "<strong>" + data.split("\n", 1) + "</strong><br>" + data.slice(data.indexOf("\n"));
+            if(data.split("\n", 1)[0].length > 21)
+            {
+                var data1 = data.split("\n", 1)[0].substring(0, 21) + "...";
+            }
+            else
+            {
+                var data1 = data.split("\n", 1)[0];
+            }
+            if(data.slice(data.indexOf("\n")).length > 21)
+            {
+                var data2 = data.slice(data.indexOf("\n")).substring(0, 21) + "...";
+            }
+            else
+            {
+                var data2 = data.slice(data.indexOf("\n"));
+            }
+            data = "<strong>" + data1 + "</strong><br>" + data2;
         }
         else
         {
+            if(data.length > 21)
+            {
+                data = data.substring(0, 21) + "...";
+            }
             data = "<strong>" + data + "</strong>" + "<br>" + "No additional text";
         }
         li.innerHTML = data + " " + date;
 
         if(notes[i])
         {
-            notesList.appendChild(li);
+            if(search != "")
+            {
+                if(notes[i][0].search(search) != -1)
+                {
+                    notesList.appendChild(li);
+                }
+            }
+            else
+            {
+                notesList.appendChild(li);
+            }
         }
     }
 }
@@ -157,4 +183,24 @@ function timeManager()
     }
     var time = d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear() + " at " + d.getHours() + ":" + d.getMinutes();
     return time;
+}
+
+function searchNotes()
+{
+    var notesDiv = document.getElementById('notes');
+    notesDiv.innerHTML = '';
+
+    var notesList = document.createElement('ul');
+    notesList.id = 'notesList';
+
+    var h3 = document.createElement('h3');
+    h3.innerHTML = 'Top Hits';
+
+    var search = document.getElementById('search').value;
+    if(search != "")
+    {
+        notesDiv.appendChild(h3);
+    }
+    notesDiv.appendChild(notesList); 
+    loadNotes(search);
 }

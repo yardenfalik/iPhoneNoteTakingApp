@@ -17,6 +17,7 @@
 <body>
     <main id="main">
         <h1><label for="text">Notes</label><button class="addButton" onclick="addNote(-1)">+</button></h1>
+        <input type="text" id="search" placeholder="Search" onkeyup="searchNotes()">
         <div id="notes" class="notes">
             <ul id="notesList"></ul>
         </div>
