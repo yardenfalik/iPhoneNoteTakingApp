@@ -117,6 +117,12 @@ strong {
     right: 0;
 }
 
+.noteTaking > .share {
+    position: absolute;
+    right: 50px;
+    font-size: 1.5rem;
+}
+
 .noteTaking > p {
     text-align: center;
     font-size: 16px;

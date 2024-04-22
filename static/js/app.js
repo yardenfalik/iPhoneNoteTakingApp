@@ -143,6 +143,11 @@ function addNote(index)
     deleteButton.className = "delete";
     deleteButton.innerHTML = "🗑️";
 
+    var shareButton = document.createElement("button");
+    shareButton.className = "share";
+    shareButton.innerHTML = "↪";
+    shareButton.setAttribute("onclick","shareNote()");
+
     var note = document.createElement("textarea");
     if(index != -1)
     {
@@ -157,6 +162,7 @@ function addNote(index)
     }
     note.id = "note";
 
+    div.appendChild(shareButton);
     div.appendChild(backButton);
     div.appendChild(deleteButton);
     div.appendChild(p);
@@ -203,4 +209,17 @@ function searchNotes()
     }
     notesDiv.appendChild(notesList); 
     loadNotes(search);
+}
+
+function shareNote()
+{
+    var note = document.getElementById('note').value;
+    var shareData = {
+        title: 'Note',
+        text: note,
+    }
+
+    navigator.share(shareData)
+    .then(() => console.log('Successful share'))
+    .catch((error) => console.log('Error sharing:', error));
 }
