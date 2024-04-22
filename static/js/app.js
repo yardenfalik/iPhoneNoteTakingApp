@@ -1,13 +1,13 @@
 var notes = [];
 
-// if(window.navigator.standalone == true)
-// {
-//     document.getElementById('instruction').style.display = 'none';
-// }
-// else
-// {
-//     document.getElementById('main').style.display = 'none';
-// }
+if(window.navigator.standalone == true)
+{
+    document.getElementById('instruction').style.display = 'none';
+}
+else
+{
+    document.getElementById('main').style.display = 'none';
+}
 
 loadNotes();
 
@@ -72,7 +72,7 @@ function loadNotes(search = "")
         {
             if(search != "")
             {
-                if(notes[i][0].search(search) != -1)
+                if(notes[i][0].toLowerCase().includes(search.toLowerCase()))
                 {
                     notesList.appendChild(li);
                 }
