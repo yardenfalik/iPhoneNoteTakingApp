@@ -16,11 +16,23 @@
 </head>
 <body>
     <main id="main">
-        <h1><label for="text">Notes</label><button class="addButton" onclick="addNote(-1)">+</button></h1>
-        <input type="text" id="search" placeholder="Search" onkeyup="searchNotes()">
-        <div id="notes" class="notes">
-            <ul id="notesList"></ul>
-        </div>
+        <h1><button id="notesButton" onclick="collapseNotes()">-</button><label for="notesSection">Notes</label><button class="addButton" onclick="addNote(-1)">+</button></h1>
+        <section id="notesSection" class="notesSection">
+            <input type="text" id="search" placeholder="Search" onkeyup="searchNotes()">
+            <div id="notes" class="notes">
+                <ul id="notesList"></ul>
+            </div>
+        </section>
+
+        <h1><button id="toDoListButton" onclick="collapseToDo()">-</button><label for="toDoListSection">To-Do List</label></h1>
+        <section id="toDoListSection" class="toDoList">
+            <input type="text" id="one">
+            <button class="addbutton" onclick="addFunction()">Add</button>
+
+            <ol id="list"></ol>
+
+            <button class="emptybutton" onclick="removeAll()">Empty List</button>
+        </section>
     </main>
     <div id="noteDiv"></div>
     <div class="instruction" id="instruction">
@@ -34,5 +46,7 @@
         </h3>
     </div>
     <script src="static/js/app.js"></script>
+    <script src="static/js/noteTakingApp.js"></script>
+    <script src="static/js/toDoListApp.js"></script>
 </body>
 </html>

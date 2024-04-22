@@ -140,3 +140,28 @@ strong {
     border: 4px solid #000000;
     border-radius: 10px;
 }
+
+.toDoList > button {
+    background-color: #FFD11A;
+    padding: 9px 25px;
+    border-style: solid;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    font-size: 18px;
+}
+
+.toDoList > input {
+    padding: 9px 25px;
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border-style: solid;
+    border-color: #ccc;
+    width: 90px;
+}
