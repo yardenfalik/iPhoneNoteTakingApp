@@ -4,10 +4,11 @@ loadList();
 
 function loadList()
 {
-    if (localStorage.getItem('toDoList')) 
+    if (localStorage.getItem('database')) 
     {
-        toDoList = JSON.parse(localStorage.getItem('toDoList'));
+        toDoList = JSON.parse(localStorage.getItem('database'))['toDoList'];
     }
+    
     document.getElementById("list").innerHTML = "";
     for (var i = 0; i < toDoList.length; i++) 
     {
@@ -36,6 +37,7 @@ function addFunction()
     var one = document.getElementById("one").value;
     toDoList.push([one, false]);
     updateDatabase();
+    loadList();
 }
 
 function deleteItem(id) 
@@ -43,12 +45,14 @@ function deleteItem(id)
     toDoList.splice(id, 1);
     markAsDone(id);
     updateDatabase();
+    loadList();
 }
 
 function removeAll() 
 {
     toDoList = [];
     updateDatabase();
+    loadList();
 }
 
 function markAsDone(id) 
@@ -65,10 +69,5 @@ function markAsDone(id)
         item.style.textDecoration = "line-through";
     }
     updateDatabase();
-}
-
-function updateDatabase()
-{
-    localStorage.setItem('toDoList', JSON.stringify(toDoList));
     loadList();
 }

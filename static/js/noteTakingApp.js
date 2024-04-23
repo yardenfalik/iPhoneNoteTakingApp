@@ -4,9 +4,9 @@ loadNotes();
 
 function loadNotes(search = "")
 {
-    if (localStorage.getItem('notes')) 
+    if (localStorage.getItem('database')) 
     {
-        notes = JSON.parse(localStorage.getItem('notes'));
+        notes = JSON.parse(localStorage.getItem('database'))['notes'];
     }
 
     var notesList = document.getElementById('notesList');
@@ -124,11 +124,6 @@ function deleteNote(index)
     updateDatabase();
     loadNotes();
     getBackButton();
-}
-
-function updateDatabase()
-{
-    localStorage.setItem('notes', JSON.stringify(notes));
 }
 
 function addNote(index)

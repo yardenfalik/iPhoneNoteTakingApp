@@ -40,3 +40,9 @@ function collapseNotes()
         notesButton.innerHTML = '+';
     }
 }
+
+function updateDatabase()
+{
+    var database = {"notes": notes, "toDoList": toDoList};
+    localStorage.setItem('database', JSON.stringify(database));
+}
